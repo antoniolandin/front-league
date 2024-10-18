@@ -1,33 +1,33 @@
 const mongoose = require('mongoose')
 
-const JugadorSchema = new mongoose.Schema({
+const PartidoSchema = new mongoose.Schema({
     id: {
         type: Number,
         unique: true,
         required: true,
     },
-    equipo: {
+    fecha_partido: {
+        type: Date,
+        required: true,
+    },
+    equipo_local: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Equipo',
         required: true,
     },
-    nombre: {
-        type: String,
+    equipo_visitante: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Equipo',
         required: true,
     },
-    primer_apellido: String,
-    segundo_apellido: String,
-    grado: String,
-    curso: Number,
-    goles: {
+    goles: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Gol',
-    },
-    numero_partidos_jugados: Number,
+        ref: 'Gol'
+    }]
 },
 {
     timestamps: true,
     versionKey: false,
 })
 
-module.exports = mongoose.model('Jugador', JugadorSchema)
+module.exports = mongoose.model('Partido', PartidoSchema)
