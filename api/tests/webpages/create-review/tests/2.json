@@ -1,0 +1,34 @@
+{
+    "title": "Errores al crear reseñas",
+    "tests": [
+        {
+            "title": "Reseña sin scoring",
+            "review": {
+                "text": "Me gustó mucho este comercio"
+            },
+            "expected": {
+                "status": 403
+            }
+        },
+        {
+            "title": "Reseña con texo numérico",
+            "review": {
+                "text": 1,
+                "rating": 3
+            },
+            "expected": {
+                "status": 403
+            }
+        },
+        {
+            "title": "Texto demasiado largo",
+            "review": {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                "rating": 3
+            },
+            "expected": {
+                "status": 403
+            }
+        }
+    ]
+}

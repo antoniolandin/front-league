@@ -1,0 +1,18 @@
+{
+    "title": "Registro exitoso",
+    "tests": [
+        {
+            "title": "Parámetros correctos",
+            "commerce": {
+                "name": "test",
+                "CIF": "L22345678",
+                "address": "Calle Falsa 123",
+                "email": "test@proton.me",
+                "phone": "123456789"
+            },
+            "expected": {
+                "status": 201
+            }
+        }
+    ]
+}

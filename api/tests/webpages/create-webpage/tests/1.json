@@ -1,0 +1,19 @@
+{
+    "title": "Crear comercio correctamente",
+    "tests": [
+        {
+            "title": "Debería crear un comercio correctamente",
+            "commerce": {
+                "title": "Comercio de prueba",
+                "city": "Bogotá",
+                "activity": "Restaurante",
+                "summary": "Resumen de prueba",
+                "scoring": 5,
+                "numReviews": 0
+            },
+            "expected": {
+                "status": 201
+            }
+        }
+    ]
+}

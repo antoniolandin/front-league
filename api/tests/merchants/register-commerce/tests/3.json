@@ -1,0 +1,31 @@
+{
+    "title": "Error de unicidad en registro de comercio",
+    "tests": [
+        {
+            "title": "Registro exitoso",
+            "commerce": {
+                "name": "Tienda de prueba",
+                "CIF": "B34567890",
+                "address": "Calle 123",
+                "email": "prueba@proton.me",
+                "phone": "123456789"
+            },
+            "expected": {
+                "status": 201
+            }
+        },
+        {
+            "title": "CIF duplicado",
+            "commerce": {
+                "name": "Charcutería",
+                "CIF": "B34567890",
+                "address": "Calle falsa 323",
+                "email": "charcuteria@proton.me",
+                "phone": "123456789"
+            },
+            "expected": {
+                "status": 400
+            }
+        }
+    ]
+}

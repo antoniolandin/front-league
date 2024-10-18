@@ -1,0 +1,50 @@
+{   
+    "title": "Errores varios en el registro de usuarios",
+    "tests": [
+        {
+            "title": "Email incorrecto",
+            "user": {
+                "name": "antonio",
+                "email": "antonio",
+                "password": "12345",
+                "age": 10,
+                "city": "madrid",
+                "interests": "programming",
+                "recibeOffers": true
+            },
+            "expected": {
+                    "status": 403
+            }
+        },
+        {
+            "title": "Todos los campos vacíos",
+            "user": {
+                "name": "",
+                "email": "",
+                "password": "",
+                "age": "",
+                "city": "",
+                "interests": "",
+                "recibeOffers": ""
+            },
+            "expected": {
+                    "status": 403
+            }
+        },
+        {
+            "title": "Campos de tipo incorrecto",
+            "user": {
+                "name": 3342,
+                "email": 83232,
+                "password": 123456,
+                "age": "20",
+                "city": 132322,
+                "interests": 3214,
+                "recibeOffers": 327
+            },
+            "expected": {
+                    "status": 403
+            }
+        }
+    ]
+}

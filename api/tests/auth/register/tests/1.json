@@ -1,0 +1,20 @@
+{   
+    "title": "Registro exitoso de usuario",
+    "tests": [
+        {
+            "title": "Parámetros correctos",
+            "user": {
+                "name": "antonio",
+                "email": "antonio@proton.me",
+                "password": "123456",
+                "age": 20,
+                "city": "madrid",
+                "interests": "programming",
+                "recibeOffers": true
+            },
+            "expected": {
+                    "status": 201
+            }
+        } 
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "title": "Login exitoso",
+    "tests": [
+        {
+            "title": "Usuario y contraseña correctos",
+            "login": {
+                "email": "testLogin@proton.me",
+                "password": "123456"
+            },
+            "expected": {
+                "status": 200
+            }
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "title": "Crear varias reseñas de forma exitosa",
+    "tests": [
+        {
+            "title": "Creamos la reseña 1",
+            "review": {
+                "text": "Me gustó mucho este comercio",
+                "rating": 5
+            },
+            "expected": {
+                "status": 201
+            }
+        },
+        {
+            "title": "Creamos la reseña 2",
+            "review": {
+                "text": "No me gustó mucho este comercio",
+                "rating": 2
+            },
+            "expected": {
+                "status": 201
+            }
+        },
+        {
+            "title": "Creamos la reseña 3",
+            "review": {
+                "text": "No está mal este comercio",
+                "rating": 3
+            },
+            "expected": {
+                "status": 201
+            }
+        }
+    ]
+}

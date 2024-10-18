@@ -1,0 +1,14 @@
+{
+    "title": "Actualizaciones correctas",
+    "tests": [
+        {
+            "title": "Actualizar título",
+            "webpage": {
+                "title": "Nuevo título"
+            },
+            "expected": {
+                "status": 200
+            }
+        }
+    ]
+}

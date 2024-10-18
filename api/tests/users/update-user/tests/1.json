@@ -1,0 +1,14 @@
+{
+    "title": "Actualizaciones correctas",
+    "tests": [
+        {
+            "title": "Actualizar título",
+            "user": {
+                "name": "Nuevo nombre"
+            },
+            "expected": {
+                "status": 200
+            }
+        }
+    ]
+}
