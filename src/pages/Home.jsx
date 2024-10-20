@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
+import React from "react";
+import Navbar from "../components/Navbar";
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  )
-}
+    <>
+      <Navbar></Navbar>
+      <div className="text-center">
+        <h1 className="text-6xl font-montserrat font-bold text-white">Home</h1>
+      </div>
+    </>
+  );
+};
 
-export default Home
-
-const styles = StyleSheet.create({})
+export default Home;
