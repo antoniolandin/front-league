@@ -1,5 +1,5 @@
 const getJugador = require('./getJugador.js')
 
-module.export = {
+module.exports = {
     getJugador
 }
