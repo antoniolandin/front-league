@@ -7,21 +7,24 @@ const getJugador = async (req, res) => {
         const id_jugador = req.params.id
         
         // si el id no es numérico devolver error
-        if(isNan(id)) {
+        if (isNaN(id_jugador)) {
             handleError(res, "La id debe ser numérica", 400)
             return
         }
 
         // buscar el jugador en la base de datos
-        const jugador = await Jugador.findById(id_jugador)
-        
-        // enviar respuesta al cliente
-        if (jugador) {
-            res.status(200).json()
-        } else {
-            handleError(res, 'Jugador no encontrado', 404)
-        }
+        Jugador.find({id:id_jugador}).then(function (result) {
+            if (result.length) {
+                res.status(200).json(result)
+            }
+            else {
+                handleError(res, 'Jugador no encontrado', 404)
+            }
+        }).catch(function (err) {
+            handleError(res, err, 400)
+        })
     } catch (error) {
+        console.log(error)
         handleError(res, error, 400)
     }
 }
