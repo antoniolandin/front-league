@@ -3,7 +3,7 @@ import PlayerCard from "./PlayerCard";
 
 export default function TeamCard({ name, players, matches, wins, losses, points }) {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <h1 className="text-2xl font-bold font-montserrat mb-4">{name}</h1>
       <div className="flex flex-wrap justify-center">
         {players.map((player, index) => (
