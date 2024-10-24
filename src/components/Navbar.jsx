@@ -1,46 +1,59 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from '../pages/Home';      // Importamos cada página
-import Ranking from '../pages/Ranking';
-import Team from '../pages/Team';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 function Navbar() {
+  const [currentName, setCurrentName] = useState(false);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    var currentName_ = localStorage.getItem("currentName");
+    if (currentName_) setCurrentName(currentName_);
+  }, []);
+
+  const handleLogout = ()=>{
+    localStorage.setItem("currentName", "");
+    setCurrentName(false)
+    navigate('/');
+  }
+
   return (
-    <Router>
-      <div styles={styles.menu}>
-        {/* Menú de navegación */}
-        <nav>
-          <ul>
-            <li>
+    <div className="flex flex-row ">
+      <div className="basis-1/4">
+        <img to="/" src={Logo} className="w-80" alt="U-tad League" />
+      </div>
+      <div className="basis-1/2 flex justify-center items-center  font-montserrat text-white">
+        <nav className="  w-full">
+          <ul className="flex justify-center text-2xl space-x-12">
+            <li className="transition-all duration-200 hover:-translate-x-2">
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/about">About</Link>
+            <li className="transition-all duration-200 hover:px-2">
+              <Link to="/ranking">Ranking</Link>
             </li>
-            <li>
-              <Link to="/contact">Contact</Link>
+            <li className="transition-all duration-200 hover:translate-x-2">
+              <Link to="/team">Team</Link>
             </li>
           </ul>
         </nav>
-
-        {/* Definición de rutas */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Ranking />} />
-          <Route path="/contact" element={<Team />} />
-        </Routes>
       </div>
-    </Router>
+      <div className="basis-1/4 -translate-x-16 flex justify-center items-center  font-montserrat text-white">
+        <nav className=" w-full">
+          <ul className="flex justify-center text-2xl space-x-12">
+            <li className="transition-all duration-200 hover:-translate-x-2">
+              <Link to="/register">Register</Link>
+            </li>
+            <li className="transition-all duration-200 hover:px-2">
+              <Link to="/login">{currentName ? currentName : "Login"}</Link>
+            </li>
+            <li className="transition-all duration-200 hover:px-2">
+              <Link onClick={handleLogout}>{currentName ? "Logout" : ""}</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 }
-
-const styles = StyleSheet.create({
-    menu:{
-        display:flex,
-        
-
-
-    },
-})
 
 export default Navbar;

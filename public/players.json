@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Lionel Messi",
+    "team": "Inter Miami",
+    "position": "Delantero",
+    "points": 37,
+    "photo": "./assets/profile.jpg",
+    "owners": [1, 2]
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "team": "Al Nassr",
+    "position": "Delantero",
+    "points": 39,
+    "photo": "./assets/profile.jpg",
+    "owners": [1]
+  },
+  {
+    "name": "Neymar Jr.",
+    "team": "Al Hilal",
+    "position": "Delantero",
+    "points": 32,
+    "photo": "./assets/profile.jpg",
+    "owners": [2]
+  },
+  {
+    "name": "Kylian Mbappé",
+    "team": "Paris Saint-Germain",
+    "position": "Delantero",
+    "points": 25,
+    "photo": "./assets/profile.jpg",
+    "owners": [1,2]
+  },
+  {
+    "name": "Kevin De Bruyne",
+    "team": "Manchester City",
+    "position": "Centrocampista",
+    "points": 33,
+    "photo": "./assets/profile.jpg",
+    "owners": [3]
+  },
+  {
+    "name": "Álvaro Salís",
+    "team": "Wolfram City",
+    "position": "Pivot",
+    "points": 33,
+    "photo": "./assets/profile.jpg",
+    "owners": [4]
+  },
+  {
+    "name": "Antonio Cabrera",
+    "team": "Wolfram City",
+    "position": "Ala",
+    "points": 36,
+    "photo": "./assets/profile.jpg",
+    "owners": [2]
+  },
+  {
+    "name": "Alejandro Gómez",
+    "team": "Wolfram City",
+    "position": "Portero",
+    "points": 31,
+    "photo": "./assets/profile.jpg",
+    "owners": [4]
+  },
+  {
+    "name": "Kosh",
+    "team": "Wolfram City",
+    "position": "Pivot",
+    "points": 40,
+    "photo": "./assets/profile.jpg",
+    "owners": [5]
+  },
+  {
+    "name": "Carlitos",
+    "team": "Wolfram City",
+    "position": "Ala",
+    "points": 20,
+    "photo": "./assets/profile.jpg",
+    "owners": [2]
+  },
+  {
+    "name": "Manolo",
+    "team": "Usad Champú FC",
+    "position": "Centrocampista",
+    "points": 33,
+    "photo": "./assets/profile.jpg",
+    "owners": [2,1]
+  },
+  {
+    "name": "Juanito",
+    "team": "Usad Champú FC",
+    "position": "Centrocampista",
+    "points": 35,
+    "photo": "./assets/profile.jpg",
+    "owners": [4]
+  },
+  {
+    "name": "Paco",
+    "team": "Usad Champú FC",
+    "position": "Centrocampista",
+    "points": 32,
+    "photo": "./assets/profile.jpg",
+    "owners": [3]
+  },
+  {
+    "name": "Roncero",
+    "team": "Usad Champú FC",
+    "position": "Centrocampista",
+    "points": 33,
+    "photo": "./assets/profile.jpg",
+    "owners": [2]
+  },
+  {
+    "name": "Mexivergas",
+    "team": "Usad Champú FC",
+    "position": "Centrocampista",
+    "points": 33,
+    "photo": "./assets/profile.jpg",
+    "owners": [5]
+  }
+]
