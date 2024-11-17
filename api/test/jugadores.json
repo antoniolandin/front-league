@@ -1,0 +1,13 @@
+[
+    {
+        "id": 0,
+        "equipo":0,
+        "nombre":"Antonio",
+        "primer_apellido":"Cabrera",
+        "segundo_apellido":"Landín",
+        "grado": "MAIS",
+        "curso": 4,
+        "goles": 1,
+        "partidos_jugados":2
+    }
+]
