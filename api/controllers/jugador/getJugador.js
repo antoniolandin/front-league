@@ -13,8 +13,8 @@ const getJugador = async (req, res) => {
         }
 
         // buscar el jugador en la base de datos
-        const result = Jugadores.findAll({where: {id: id_jugador}}).then(function (result) {
-            if (result.length) {
+        const result = Jugadores.findOne({where: {id: id_jugador}}).then(function (result) {
+            if (result) {
                 res.status(200).json(result)
             }
             else {
