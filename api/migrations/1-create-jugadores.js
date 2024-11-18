@@ -20,7 +20,8 @@ module.exports = {
         onUpdate: "CASCADE",
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       primer_apellido: {
         type: Sequelize.STRING
@@ -35,10 +36,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       goles: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       partidos_jugados: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
