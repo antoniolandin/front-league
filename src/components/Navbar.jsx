@@ -4,18 +4,18 @@ import Logo from "../assets/logo.png";
 
 function Navbar() {
   const [currentName, setCurrentName] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     var currentName_ = localStorage.getItem("currentName");
     if (currentName_) setCurrentName(currentName_);
   }, []);
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     localStorage.setItem("currentName", "");
-    setCurrentName(false)
-    navigate('/');
-  }
+    setCurrentName(false);
+    navigate("/");
+  };
 
   return (
     <div className="flex flex-row ">
@@ -30,9 +30,6 @@ function Navbar() {
             </li>
             <li className="transition-all duration-200 hover:px-2">
               <Link to="/ranking">Ranking</Link>
-            </li>
-            <li className="transition-all duration-200 hover:translate-x-2">
-              <Link to="/team">Team</Link>
             </li>
           </ul>
         </nav>

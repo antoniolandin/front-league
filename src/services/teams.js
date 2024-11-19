@@ -1,16 +1,17 @@
 //  Función para obtener todos los equipos
 export const fetchEquipos = async () => {
-  try {
-    const response = await fetch("/api/equipos/");
-    if (!response.ok) {
-      throw new Error("Error al obtener los equipos");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error en fetchEquipos:", error);
-    throw error;
-  }
+  const response = await fetch(
+    "https://f09c-212-0-109-168.ngrok-free.app/api/equipos",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  )
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
 };
 
 // Función para obtener un equipo por ID
