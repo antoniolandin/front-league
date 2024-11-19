@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
+import { fetchEquipos } from "../services/teams";
 const Ranking = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
+  const [teams, setTeams] = useState([]);
 
   useEffect(() => {
     setBackgroundVisible(false);
@@ -10,6 +12,8 @@ const Ranking = () => {
     const timeout = setTimeout(() => {
       setBackgroundVisible(true);
     }, 500);
+
+    setTeams(fetchEquipos());
 
     return () => {
       clearTimeout(timeout);
