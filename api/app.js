@@ -13,7 +13,7 @@ app.use(express.json())
 app.use('/api', require('./routes'))
 
 // Puerto abierto para backend
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3500
 
 // Escuchamos el puerto
 app.listen(port, () => {
