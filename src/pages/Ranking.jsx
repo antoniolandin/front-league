@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
-import { fetchEquipos } from "../services/teams";
 
 const Ranking = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
@@ -14,16 +13,22 @@ const Ranking = () => {
       setBackgroundVisible(true);
     }, 500);
 
-    const obtenerEquipos = async () => {
+    const fetchUsers = async () => {
       try {
-        const data = await fetchEquipos();
+        const response = await fetch(
+          "https://d23e-212-0-109-168.ngrok-free.app/api/equipos",
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await console.log(response.text());
         setTeams(data);
       } catch (error) {
-        console.error("Error al obtener equipos:", error);
+        throw new Error("Error: " + error.message);
       }
     };
 
-    obtenerEquipos();
+    fetchUsers();
 
     return () => {
       clearTimeout(timeout);
