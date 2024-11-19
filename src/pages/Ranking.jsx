@@ -1,39 +1,39 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
+import { fetchEquipos } from "../services/teams.js"
 import { useState } from "react";
 
 const Ranking = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
   const [teams, setTeams] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setBackgroundVisible(false);
+  
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // fetch a la url de la api
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/equipos`);
 
-    const timeout = setTimeout(() => {
-      setBackgroundVisible(true);
-    }, 500);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const result = await response.json();
+                setTeams(result); // Assuming result is an array of locations
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(
-          "https://d23e-212-0-109-168.ngrok-free.app/api/equipos",
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await console.log(response.text());
-        setTeams(data);
-      } catch (error) {
-        throw new Error("Error: " + error.message);
-      }
-    };
+        fetchData();
+    }, []);
 
-    fetchUsers();
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
 
   return (
     <>
