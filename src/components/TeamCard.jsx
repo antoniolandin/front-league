@@ -1,21 +1,15 @@
 import React from "react";
-import PlayerCard from "./PlayerCard";
 
-export default function TeamCard({ name, players, matches, wins, losses, points }) {
+export default function TeamCard({ nombre, puntos, partidos_jugados }) {
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold font-montserrat mb-4">{name}</h1>
-      <div className="flex flex-wrap justify-center">
-        {players.map((player, index) => (
-          <PlayerCard
-            key={index}
-            name={player.name}
-            team={player.team}
-            position={player.position}
-            points={player.points}
-            photo={player.photo}
-          ></PlayerCard>
-        ))}
+      <div className="flex justify-between bg-greenCard bg-opacity-40 border border-white-200 rounded-lg p-5 shadow-md">
+        <h1 className="text-2xl text-white font-bold font-montserrat">
+          {nombre}
+        </h1>
+        <h1 className="text-xl text-white font-semibold font-montserrat mt-1">
+          Puntos: {puntos}
+        </h1>
       </div>
     </div>
   );

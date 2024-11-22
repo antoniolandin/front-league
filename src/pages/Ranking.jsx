@@ -1,39 +1,46 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { fetchEquipos } from "../services/teams.js"
+import { fetchEquipos } from "../services/teams.js";
 import { useState } from "react";
+import TeamCard from "../components/TeamCard.jsx";
 
 const Ranking = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
   const [teams, setTeams] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // fetch a la url de la api
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/equipos`);
+  useEffect(() => {
+    setBackgroundVisible(false);
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const result = await response.json();
-                setTeams(result); // Assuming result is an array of locations
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+    const timeout = setTimeout(() => {
+      setBackgroundVisible(true);
+    }, 500);
 
-        fetchData();
-    }, []);
+    const fetchData = async () => {
+      try {
+        setBackgroundVisible(false);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+        // fetch a la url de la api
+        const response = await fetch(`http://localhost:3500/api/equipos`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        setTeams(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <>
@@ -46,18 +53,13 @@ const Ranking = () => {
         <h1 className="text-6xl font-montserrat font-bold text-white">
           Ranking
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        <div className="flex flex-col justify-center mt-12">
           {teams.map((team) => (
-            <div key={team.id} className="bg-white shadow-md rounded-lg p-4">
-              <h2 className="text-xl font-bold">{team.nombre}</h2>
-              <p>Partidos Jugados: {team.partidos_jugados}</p>
-              <p>Victorias: {team.victorias}</p>
-              <p>Derrotas: {team.derrotas}</p>
-              <p>Empates: {team.empates}</p>
-              <p>Puntos: {team.puntos}</p>
-              <p>Goles a Favor: {team.goles_favor}</p>
-              <p>Goles en Contra: {team.goles_contra}</p>
-            </div>
+            <TeamCard
+              nombre={team.nombre}
+              puntos={team.puntos}
+              partidos_jugados={team.partidos_jugados}
+            />
           ))}
         </div>
       </div>

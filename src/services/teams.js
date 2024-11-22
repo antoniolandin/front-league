@@ -1,24 +1,24 @@
 //  Función para obtener todos los equipos
 export const fetchEquipos = async () => {
-    try {
-        // obtenemos la url de la api de las variables de entorno
-        const url = process.env.REACT_APP_API_URL;
-        
-        const response = await fetch(`${url}/api/equipos`);
+  try {
+    // obtenemos la url de la api de las variables de entorno
+    const url = process.env.REACT_APP_API_URL;
 
-        // Check if the response is ok (status in the range 200-299)
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+    const response = await fetch(`http://localhost:3500/api/equipos`);
 
-        const teams = await response.json();
-
-        return teams;
-    } catch (error) {
-        console.error('Error fetching teams:', error);
-
-        return null; // or you can return an empty array or any other fallback
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    const teams = await response.json();
+
+    return teams;
+  } catch (error) {
+    console.error("Error fetching teams:", error);
+
+    return null; // or you can return an empty array or any other fallback
+  }
 };
 
 // Función para obtener un equipo por ID
