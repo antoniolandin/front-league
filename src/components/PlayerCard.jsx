@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function PlayerCard({
+  id,
   nombre,
   primer_apellido,
   segundo_apellido,
@@ -20,7 +21,7 @@ export default function PlayerCard({
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {nombre}
         </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">{team}</p>
+        <p className="font-normal text-gray-700 dark:text-gray-400">{grado}</p>
         <p className="mb-3 font-light text-gray-700 dark:text-gray-400">
           {grado}
         </p>

@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Ranking from "./pages/Ranking";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Team from "./pages/Team";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  { path: "/equipo/:id", element: <Team /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

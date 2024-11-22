@@ -56,6 +56,7 @@ const Ranking = () => {
         <div className="flex flex-col justify-center mt-12">
           {teams.map((team) => (
             <TeamCard
+              id={team.id}
               nombre={team.nombre}
               puntos={team.puntos}
               partidos_jugados={team.partidos_jugados}
