@@ -9,6 +9,7 @@ const Ranking = () => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  var posicion = 1;
 
   useEffect(() => {
     setBackgroundVisible(false);
@@ -53,10 +54,11 @@ const Ranking = () => {
         <h1 className="text-6xl font-montserrat font-bold text-white">
           Ranking
         </h1>
-        <div className="flex flex-col justify-center mt-12">
+        <div className="flex flex-col justify-center mt-12 mb-12">
           {teams.map((team) => (
             <TeamCard
               id={team.id}
+              posicion={posicion++}
               nombre={team.nombre}
               puntos={team.puntos}
               partidos_jugados={team.partidos_jugados}

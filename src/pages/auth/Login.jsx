@@ -35,7 +35,7 @@ export default function Login() {
       <Navbar name={currentName}></Navbar>
       <div className="mt-0 mb-16">
         <h1 className="text-6xl mb-8 text-center font-bold font-montserrat text-white">
-          Login
+          Acceder
         </h1>
         <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="mb-5">

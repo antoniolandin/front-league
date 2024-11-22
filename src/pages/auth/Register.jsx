@@ -3,7 +3,6 @@ import { registerUser } from "../../services/auth";
 import { useState } from "react";
 
 export default function Register() {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +21,9 @@ export default function Register() {
     <>
       <Navbar />
       <div className="mt-0 mb-16">
-        <h1 className="text-6xl mb-8 text-center font-bold font-montserrat text-white">Sign Up</h1>
+        <h1 className="text-6xl mb-8 text-center font-bold font-montserrat text-white">
+          Registrar
+        </h1>
         <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="mb-5">
             <input

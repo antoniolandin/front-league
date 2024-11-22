@@ -62,7 +62,7 @@ export default function Team() {
             {nombre}
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 mt-16 p-8 mr-0">
           {jugadores.map((jugador) => (
             <PlayerCard
               id={jugador.id}
