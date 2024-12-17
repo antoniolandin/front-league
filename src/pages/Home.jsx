@@ -4,6 +4,9 @@ import MatchCard from "../components/MatchCard";
 
 const Home = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
+  const [partidos, setPartidos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -20,7 +23,7 @@ const Home = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
-        setTeams(result);
+        setPartidos(result);
       } catch (err) {
         setError(err.message);
       } finally {
