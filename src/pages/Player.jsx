@@ -16,11 +16,11 @@ export default function Player() {
     grado,
     curso,
     partidos,
+    goles,
   } = location.state || {};
 
   useEffect(() => {
     setBackgroundVisible(false);
-
     const timeout = setTimeout(() => {
       setBackgroundVisible(true);
     }, 500);
@@ -35,10 +35,29 @@ export default function Player() {
         className={`fixed inset-0 bg-cover transition-opacity duration-500 ease-in-out ${backgroundVisible ? "opacity-100" : "opacity-0"}`}
         style={{ backgroundImage: 'url("/fondo1.png")', zIndex: -999 }}
       ></div>
-      <div className="flex flex-col justify-center text-center">
-        <h1 className="text-white font-bold text-4xl font-montserrat">
-          {nombre}
-        </h1>
+      <div className="flex justify-center w-full flex-row">
+        <img
+          className="object-cover w-full rounded-lg h-96 md:h-auto md:w-48 md:rounded-lg"
+          src="/profile.jpg"
+          alt=""
+        />
+        <div className="flex flex-col ml-24 justify-center text-start">
+          <h1 className="text-white font-extralight text-4xl font-montserrat">
+            {nombre} {primer_apellido} {segundo_apellido}
+          </h1>
+          <h2 className="text-white font-extralight text-xl font-montserrat">
+            Grado: {grado}
+          </h2>
+          <h3 className="text-white font-extralight text-xl font-montserrat">
+            Curso: {curso}
+          </h3>
+          <h3 className="text-white font-extralight text-xl font-montserrat">
+            Partidos Jugados: {partidos}
+          </h3>
+          <h3 className="text-white font-extralight text-xl font-montserrat">
+            Goles: {goles}
+          </h3>
+        </div>
       </div>
     </>
   );

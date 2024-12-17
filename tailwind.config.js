@@ -18,6 +18,15 @@ module.exports = {
         greenCard: {
           DEFAULT: "#31C48D",
         },
+        pinkCard: {
+          DEFAULT: "#fca6ed",
+        },
+        blueCard: {
+          DEFAULT: "#1839a8",
+        },
+        blueDarkCard: {
+          DEFAULT: "#14308d",
+        },
       },
     },
   },

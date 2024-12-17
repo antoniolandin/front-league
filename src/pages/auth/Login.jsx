@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
-import { loginUser } from "../../services/auth";
+import { loginUsuario } from "../../services/auth";
 
 export default function Login() {
   const [currentName, setCurrentName] = useState("");
@@ -10,29 +10,15 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const result = loginUser(email, password);
-
-    if (result.success) {
-      console.log("Datos del usuario:", result.user);
-      localStorage.setItem("loggedInUser", JSON.stringify(result.user));
-      localStorage.setItem("currentName", result.user.name);
-      localStorage.setItem("currentId", result.user.id);
-      setCurrentName(localStorage.getItem("currentName"));
-      navigate("/");
-    } else {
-      alert(result.message);
-    }
-
-    setEmail("");
-    setPassword("");
+    await loginUsuario(email, password);
+    window.location.reload();
   };
 
   return (
     <>
-      <Navbar name={currentName}></Navbar>
+      <Navbar />
       <div className="mt-0 mb-16">
         <h1 className="text-6xl mb-8 text-center font-bold font-montserrat text-white">
           Acceder

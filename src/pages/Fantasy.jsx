@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import PlayerCard from "../components/PlayerCard";
 
-export default function Team() {
-  const location = useLocation();
-  const { id } = useParams("id");
-  const { nombre, puntos, partidos_jugados } = location.state || {};
-  const [jugadores, setJugadores] = useState([]);
+export default function Fantasy() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [backgroundVisible, setBackgroundVisible] = useState(false);
+  const { id } = useParams();
+  const [jugadores, setJugadores] = useState([]);
 
   useEffect(() => {
     setBackgroundVisible(false);
@@ -25,9 +22,17 @@ export default function Team() {
       try {
         setBackgroundVisible(false);
 
-        // fetch a la url de la api
+        const token = "tu_token_aqui"; // Reemplaza esto con tu token real
+
         const response = await fetch(
-          `http://localhost:3500/api/equipos/${id}/jugadores`,
+          `http://localhost:3500/api/fantasy_equipos/equipo`,
+          {
+            method: "GET", // Método de la solicitud
+            headers: {
+              "Content-Type": "application/json", // Tipo de contenido
+              Authorization: `Bearer ${token}`, // Agrega el token aquí
+            },
+          },
         );
 
         if (!response.ok) {
@@ -43,7 +48,6 @@ export default function Team() {
     };
 
     fetchData();
-
     return () => {
       clearTimeout(timeout);
     };
@@ -54,25 +58,22 @@ export default function Team() {
       <Navbar></Navbar>
       <div
         className={`fixed inset-0 bg-cover transition-opacity duration-500 ease-in-out ${backgroundVisible ? "opacity-100" : "opacity-0"}`}
-        style={{ backgroundImage: 'url("/fondo.png")', zIndex: -999 }}
+        style={{ backgroundImage: 'url("/fondo1.png")', zIndex: -999 }}
       ></div>
       <div className="flex flex-col justify-center mt-12">
         <div className="text-center ">
           <h1 className="text-white text-4xl font-bold font-montserrat">
-            {nombre}
+            Fantasy
           </h1>
         </div>
-        <div className="place-items-center grid grid-cols-3 gap-4 mt-16 p-8">
+        <div className="grid grid-cols-3 gap-4 mt-16 p-8 mr-0">
           {jugadores.map((jugador) => (
             <PlayerCard
               id={jugador.id}
               nombre={jugador.nombre}
               primer_apellido={jugador.primer_apellido}
-              segundo_apellido={jugador.segundo_apellido}
               grado={jugador.grado}
               curso={jugador.curso}
-              partidos={jugador.partidos_jugados}
-              goles={jugador.goles}
             />
           ))}
         </div>

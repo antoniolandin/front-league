@@ -1,43 +1,72 @@
-export function getStoredUsers() {
-  const storedUsers = localStorage.getItem("users");
-  return storedUsers ? JSON.parse(storedUsers) : [];
-}
+function showAlertWithErrors(errorResponse) {
+  if (errorResponse && errorResponse.error) {
+    const errorMessages = errorResponse.error.map((error) => error.msg);
 
-export function saveUsers(users) {
-  localStorage.setItem("users", JSON.stringify(users));
-}
+    const alertMessage = errorMessages.join("\n");
 
-export function registerUser(name, email, password) {
-  let users = getStoredUsers();
-
-  if (users.some((user) => user.email === email)) {
-    return { success: false, message: "El email ya está registrado" };
+    return alertMessage;
   }
+}
+export async function registrarUsuario(nombre, email, contraseña) {
+  const response = await fetch("http://localhost:3500/api/usuarios/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nombre,
+      email,
+      contraseña,
+    }),
+  });
 
-  const newUser = {
-    id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
-    name,
-    email,
-    password,
-  };
+  const data = await response.json();
+  console.log(data);
+  console.log(response.status);
 
-  users.push(newUser);
-
-  saveUsers(users);
-
-  return { success: true, message: "Usuario registrado exitosamente" };
+  if (
+    response.status === 400 ||
+    response.status === 403 ||
+    response.status === 404
+  ) {
+    alert(data.msg || showAlertWithErrors(data));
+  } else {
+    alert("Usuario registrado con éxito");
+  }
 }
 
-export function loginUser(email, password) {
-  const users = getStoredUsers();
+export async function loginUsuario(email, contraseña) {
+  const response = await fetch("http://localhost:3500/api/usuarios/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      contraseña,
+    }),
+  });
 
-  const user = users.find(
-    (user) => user.email === email && user.password === password,
-  );
+  const data = await response.json();
+  console.log(data);
+  console.log(response.status);
 
-  if (user) {
-    return { success: true, message: "Inicio de sesión exitoso", user }; 
+  if (
+    response.status === 400 ||
+    response.status === 403 ||
+    response.status === 404
+  ) {
+    alert(data.msg || showAlertWithErrors(data));
   } else {
-    return { success: false, message: "Email o contraseña incorrectos" };
+    alert("Usuario autorizado");
+    localStorage.setItem("token", data.token);
+    localStorage.setItem(
+      "nombreUsuario",
+      JSON.stringify(data.usuario.id && data.usuario.nombre),
+    );
+    localStorage.setItem(
+      "idUsuario",
+      parseInt(JSON.stringify(data.usuario.id)),
+    );
   }
 }

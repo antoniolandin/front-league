@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { registerUser } from "../../services/auth";
+import { registrarUsuario } from "../../services/auth";
 import { useState } from "react";
 
 export default function Register() {
@@ -10,11 +10,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const result = registerUser(name, email, password);
-
-    if (!result.success) {
-      alert(result.message);
-    }
+    await registrarUsuario(name, email, password);
   };
 
   return (

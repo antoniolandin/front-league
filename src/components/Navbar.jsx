@@ -5,14 +5,17 @@ import Logo from "../assets/logo.png";
 function Navbar() {
   const [currentName, setCurrentName] = useState(false);
   const navigate = useNavigate();
+  const pathFantasy = `/fantasy/${localStorage.getItem("idUsuario")}`;
 
   useEffect(() => {
-    var currentName_ = localStorage.getItem("currentName");
-    if (currentName_) setCurrentName(currentName_);
+    var currentName_ = localStorage.getItem("nombreUsuario");
+    if (currentName_) setCurrentName(currentName_.replace(/"/g, ""));
   }, []);
 
   const handleLogout = () => {
-    localStorage.setItem("currentName", "");
+    localStorage.removeItem("nombreUsuario");
+    localStorage.removeItem("idUsuario");
+    localStorage.removeItem("token");
     setCurrentName(false);
     navigate("/");
   };
@@ -41,7 +44,12 @@ function Navbar() {
               <Link to="/register">Register</Link>
             </li>
             <li className="transition-all duration-200 hover:px-2">
-              <Link to="/login">{currentName ? currentName : "Login"}</Link>
+              <Link to={currentName ? "" : "/login"}>
+                {currentName ? currentName : "Login"}
+              </Link>
+            </li>
+            <li>
+              <Link to={pathFantasy}>{currentName ? "Fantasy" : ""}</Link>
             </li>
             <li className="transition-all duration-200 hover:px-2">
               <Link onClick={handleLogout}>{currentName ? "Logout" : ""}</Link>
