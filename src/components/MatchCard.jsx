@@ -10,13 +10,13 @@ export default function MatchCard({
 }) {
   return (
     <div className="container mx-auto mt-4">
-      <div className="flex justify-between bg-greenCard bg-opacity-40 border border-white-200 rounded-lg p-5 shadow-md">
+      <div className="flex justify-between bg-blue-400 bg-opacity-40 border border-white-200 rounded-lg p-5 shadow-md">
         <h1 className="text-2xl text-white font-bold font-montserrat">
-          {fecha}
+          <span className="">{`${fecha} .`}</span>
           {"  "}
           <span
             className={
-              equipo_ganador === equipo_uno ? "text-green-500" : "text-white"
+              equipo_ganador === equipo_uno ? "text-cyan-300" : "text-white"
             }
           >
             {equipo_uno}
@@ -24,7 +24,7 @@ export default function MatchCard({
           -{" "}
           <span
             className={
-              equipo_ganador === equipo_dos ? "text-green-500" : "text-white"
+              equipo_ganador === equipo_dos ? "text-cyan-300" : "text-white"
             }
           >
             {equipo_dos}

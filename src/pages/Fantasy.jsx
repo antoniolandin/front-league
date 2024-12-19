@@ -10,6 +10,7 @@ export default function Fantasy() {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
   const { id } = useParams();
   const [jugadores, setJugadores] = useState([]);
+  const [fantasy, setFantasy] = useState([]);
 
   useEffect(() => {
     setBackgroundVisible(false);
@@ -18,27 +19,54 @@ export default function Fantasy() {
       setBackgroundVisible(true);
     }, 500);
 
-    const fetchData = async () => {
-      try {
-        setBackgroundVisible(false);
+    setBackgroundVisible(false);
 
-        const token = "tu_token_aqui"; // Reemplaza esto con tu token real
+    const fetchFantasy = async () => {
+      try {
+        const token = localStorage.getItem("token");
 
         const response = await fetch(
           `http://localhost:3500/api/fantasy_equipos/equipo`,
           {
-            method: "GET", // Método de la solicitud
+            method: "GET",
             headers: {
-              "Content-Type": "application/json", // Tipo de contenido
-              Authorization: `Bearer ${token}`, // Agrega el token aquí
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
           },
         );
-
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
+        console.log(result);
+        setFantasy(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchJugadores = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const id_equipo = fantasy.id;
+        const response = await fetch(
+          `http://localhost:3500/api/fantasy_equipos/${id}/jugadores`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        console.log(result);
         setJugadores(result);
       } catch (err) {
         setError(err.message);
@@ -47,7 +75,9 @@ export default function Fantasy() {
       }
     };
 
-    fetchData();
+    fetchFantasy();
+    fetchJugadores();
+
     return () => {
       clearTimeout(timeout);
     };
@@ -66,7 +96,9 @@ export default function Fantasy() {
             Fantasy
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-4 mt-16 p-8 mr-0">
+        <div
+          className={`place-items-center grid ${jugadores.length % 3 === 0 ? "grid-cols-3" : "grid-cols-3 justify-items-center"} gap-4 mt-16 p-8`}
+        >
           {jugadores.map((jugador) => (
             <PlayerCard
               id={jugador.id}

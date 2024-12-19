@@ -62,9 +62,12 @@ export default function Team() {
             {nombre}
           </h1>
         </div>
-        <div className="place-items-center grid grid-cols-3 gap-4 mt-16 p-8">
+        <div
+          className={`place-items-center grid ${jugadores.length % 3 === 0 ? "grid-cols-3" : "grid-cols-3 justify-items-center"} gap-4 mt-16 p-8`}
+        >
           {jugadores.map((jugador) => (
             <PlayerCard
+              key={jugador.id}
               id={jugador.id}
               nombre={jugador.nombre}
               primer_apellido={jugador.primer_apellido}
@@ -73,6 +76,7 @@ export default function Team() {
               curso={jugador.curso}
               partidos={jugador.partidos_jugados}
               goles={jugador.goles}
+              photo={jugador.photo}
             />
           ))}
         </div>

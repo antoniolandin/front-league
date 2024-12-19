@@ -4,26 +4,34 @@ import MatchCard from "../components/MatchCard";
 
 const Home = () => {
   const [backgroundVisible, setBackgroundVisible] = useState(false);
-  const [partidos, setPartidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [proximosPartidos, setProximosPartidos] = useState([]);
+  const [partidosJugados, setPartidosJugados] = useState([]);
+
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    const options = { day: "numeric", month: "numeric" };
+    return date.toLocaleDateString("es-ES", options);
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setBackgroundVisible(true);
     }, 500);
 
-    const fetchData = async () => {
+    const fetchProximosPartidos = async () => {
       try {
         setBackgroundVisible(false);
 
-        const response = await fetch(`http://localhost:3500/api/partidos`);
-
+        const response = await fetch(
+          `http://localhost:3500/api/partidos/proximos`,
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
-        setPartidos(result);
+        setProximosPartidos(result);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -31,19 +39,30 @@ const Home = () => {
       }
     };
 
-    fetchData();
+    const fetchPartidosJugados = async () => {
+      try {
+        setBackgroundVisible(false);
+
+        const response = await fetch(`http://localhost:3500/api/partidos/`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        setPartidosJugados(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProximosPartidos();
+    fetchPartidosJugados();
 
     return () => {
       clearTimeout(timeout);
     };
   }, []);
-
-  const partidosJugados = partidos.filter(
-    (partido) => partido.goles_uno !== null && partido.goles_dos !== null,
-  );
-  const partidosNoJugados = partidos.filter(
-    (partido) => partido.goles_uno === null && partido.goles_dos === null,
-  );
 
   return (
     <>
@@ -65,23 +84,23 @@ const Home = () => {
               equipo_ganador={partido.equipo_ganador}
               goles_uno={partido.goles_uno}
               goles_dos={partido.goles_dos}
-              fecha={partido.fecha}
+              fecha={formatDate(partido.fecha)}
             />
           ))}
         </div>
         <h2 className="text-4xl font-montserrat font-bold text-white mt-12">
           Próximos partidos
         </h2>
-        <div className="flex flex-col justify-center mt-4 mb-12">
-          {partidosNoJugados.map((partido) => (
+        <div className="flex m-60 flex-col justify-center mt-4 mb-12">
+          {proximosPartidos.map((partido) => (
             <MatchCard
               key={partido.id}
               equipo_uno={partido.equipo_uno}
               equipo_dos={partido.equipo_dos}
-              equipo_ganador={partido.equipo_ganador}
-              goles_uno={partido.goles_uno}
-              goles_dos={partido.goles_dos}
-              fecha={partido.fecha}
+              equipo_ganador={null}
+              goles_uno={null}
+              goles_dos={null}
+              fecha={formatDate(partido.fecha)}
             />
           ))}
         </div>
