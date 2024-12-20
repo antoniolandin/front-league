@@ -10,6 +10,7 @@ import Register from "./pages/auth/Register";
 import Team from "./pages/Team";
 import Player from "./pages/Player";
 import Fantasy from "./pages/Fantasy";
+import FantasyRanking from "./pages/FantasyRanking";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
   },
   { path: "/equipo/:id", element: <Team /> },
   { path: "/jugador/:id", element: <Player /> },
-  { path: "/Fantasy/:id", element: <Fantasy /> },
+  { path: "/fantasy/:id", element: <Fantasy /> },
+  { path: "/fantasy/ranking", element: <FantasyRanking /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

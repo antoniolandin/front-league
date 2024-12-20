@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import PlayerCard from "../components/FantasyCard";
@@ -16,6 +16,7 @@ export default function Fantasy() {
   const [cartera, setCartera] = useState(0);
   const [addPlayers, setAddPlayers] = useState(false);
   const [allPlayers, setAllPlayers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCartera(localStorage.getItem("cartera"));
@@ -177,6 +178,10 @@ export default function Fantasy() {
 
     fetchAddPlayer();
   }
+
+  const handleRanking = () => {
+    navigate("/fantasy/ranking");
+  }
     
   return (
     <>
@@ -208,6 +213,7 @@ export default function Fantasy() {
           ))}
         </div>
         <div className="fantasy-add">
+            <button className="fantasy-ranking" onClick={handleRanking}>Ranking</button>
             <button className="fantasy-add-button" onClick={handleAdd}>Añadir Jugadores</button>
         </div>
       </div>

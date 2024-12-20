@@ -5,7 +5,7 @@
 .fantasy-add-button {
     color: white;
     font-weight: bold;
-    margin-left: 81%;
+    margin-left: 62%;
     background: rgba(61, 58, 78, 0.5);
     text-align: center;
     cursor: pointer;
@@ -16,6 +16,26 @@
 }
 
 .fantasy-add-button:hover {
+    background: rgba(76, 74, 95, 0.5);
+}
+
+.fantasy-ranking {
+    color: white;
+    width: 7%;
+    background: rgba(61, 58, 78, 0.5);
+    text-align: center;
+    cursor: pointer;
+    padding: 12px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    transition: all 0.5s;
+    margin-bottom: 20px;
+    margin-left: 11%;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.fantasy-ranking:hover {
     background: rgba(76, 74, 95, 0.5);
 }
 

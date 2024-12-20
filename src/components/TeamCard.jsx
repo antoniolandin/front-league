@@ -9,7 +9,7 @@ export default function TeamCard({
   posicion,
 }) {
   const navigate = useNavigate();
-
+  console.log(nombre);
   const handleClick = () => {
     navigate(`/equipo/${id}`, { state: { nombre, puntos, partidos_jugados } });
   };
