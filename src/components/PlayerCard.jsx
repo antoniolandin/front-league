@@ -42,10 +42,10 @@ export default function PlayerCard({
         alt=""
       />
       <div className="text-center">
-        <h5 className="mb-2 text-2xl font-bold font-montserrat tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 text-2xl font-bold font-montserrat tracking-tight text-white">
           {nombre}
         </h5>
-        <h4 className="mb-2 text-xl font-montserrat italic tracking-tight text-gray-700 dark:text-white">
+        <h4 className="mb-2 text-xl font-montserrat italic tracking-tight text-white">
           {`Goles: ${goles}`}
         </h4>
       </div>
