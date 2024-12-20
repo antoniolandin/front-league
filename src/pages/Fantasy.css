@@ -1,0 +1,81 @@
+.fantasy-cartera {
+    color: white;
+}
+
+.fantasy-add-button {
+    color: white;
+    font-weight: bold;
+    margin-left: 81%;
+    background: rgba(61, 58, 78, 0.5);
+    text-align: center;
+    cursor: pointer;
+    padding: 12px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    transition: all 0.5s;
+}
+
+.fantasy-add-button:hover {
+    background: rgba(76, 74, 95, 0.5);
+}
+
+.add-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 450%;
+}
+
+.add-player-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 50, 50, 0.5);
+}
+
+.add-player-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: #992323;
+    border: 2px solid white;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    top: 1%;
+    right: 24%;
+}
+
+.add-player-panel {
+    width: 50%;
+    background: rgba(50, 50, 50, 0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.add-player-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    transform: translate(-17%, 0%);
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

@@ -68,5 +68,6 @@ export async function loginUsuario(email, contraseña) {
       "idUsuario",
       parseInt(JSON.stringify(data.usuario.id)),
     );
+    localStorage.setItem("cartera", parseInt(data.usuario.cartera));
   }
 }

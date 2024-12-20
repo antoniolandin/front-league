@@ -1,0 +1,14 @@
+.add-fantasy-contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: rgba(61, 58, 78, 0.5);
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 15px;
+}
